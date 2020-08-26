@@ -5,17 +5,14 @@ USER root
 RUN mkdir /demo && chown was /demo
 
 USER was
-RUN mkdir /demo/db2drivers
+
 RUN mkdir /demo/mysqldrivers
-COPY db2drivers/db2jcc.jar /demo/db2drivers
-COPY db2drivers/db2jcc_license_cu.jar /demo/db2drivers
-COPY mysqldrivers/mysql-connector-java-8.0.17.jar /demo/mysqldrivers
+
+COPY mysqldrivers/mysql-connector-java-8.0.21.jar /demo/mysqldrivers
 
 COPY wsadmin.py /demo/
 COPY cargotracker-1.0.war /demo/
-COPY HelloWorld.war /demo/
-COPY pbw-ear8.ear /demo/
-COPY pbw-ear7.ear /demo/
+
 COPY transformationadvisor-2.1_Linux_Demo1.tgz.part* /demo/
 
 WORKDIR "/demo"
