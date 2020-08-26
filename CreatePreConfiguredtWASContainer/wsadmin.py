@@ -8,7 +8,12 @@ MYSQLJDBC=AdminTask.createJDBCProvider('[-scope Node=DefaultNode01 -databaseType
 #Create Datasources
 #AdminTask.createDatasource(DB2JDBCXA, '[-name PlantsByWebSphereDataSource -jndiName jdbc/PlantsByWebSphereDataSource -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/PlantsAuthAlias -xaRecoveryAuthAlias DefaultNode01/PlantsAuthAlias -configureResourceProperties [[databaseName java.lang.String PLANTSDB] [driverType java.lang.Integer 4] [serverName java.lang.String 169.62.104.36] [portNumber java.lang.Integer 32612]]]')
 #AdminTask.createDatasource(DB2JDBC, '[-name PlantsByWebSphereDataSourceNONJTA -jndiName jdbc/PlantsByWebSphereDataSourceNONJTA -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/PlantsAuthAlias -configureResourceProperties [[databaseName java.lang.String PLANTSDB] [driverType java.lang.Integer 4] [serverName java.lang.String 169.62.104.36] [portNumber java.lang.Integer 32612]]]')
-AdminTask.createDatasource(MYSQLJDBC,'[-name MySQLDataSource -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb -configureResourceProperties [[databaseName java.lang.String cargotracker] [serverName java.lang.String 10.242.0.6] [portNumber java.lang.Integer 6603] [user java.lang.String root] [password java.lang.String password]]]')
+ADTask=AdminTask.createDatasource(MYSQLJDBC,'[-name MySQLDataSource -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb]')
+AdminConfig.modify(ADTask,'[[name "serverName"] [type "java.lang.String"] [description ""] [value "10.242.0.6"] [required "false"]]')
+AdminConfig.modify(ADTask,'[[name "portNumber"] [type "java.lang.Integer"] [description ""] [value "6603"] [required "false"]]')
+AdminConfig.modify(ADTask,'[[name "databaseName"] [type "java.lang.String"] [description ""] [value "cargotracker"] [required "false"]]')
+AdminConfig.modify(ADTask,'[[name "user"] [type "java.lang.String"] [description ""] [value "root"] [required "false"]]')
+AdminConfig.modify(ADTask,'[[name "password"] [type "java.lang.String"] [description ""] [value "password"] [required "false"]]')
 
 #Change JPA from 2.1 to 2.0
 svr = AdminConfig.getid('/Server:server1/')
