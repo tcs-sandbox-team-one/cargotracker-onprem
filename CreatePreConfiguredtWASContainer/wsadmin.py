@@ -10,10 +10,9 @@ MYSQLJDBC=AdminTask.createJDBCProvider('[-scope Cell=DefaultCell01 -databaseType
 #AdminTask.createDatasource(DB2JDBC, '[-name PlantsByWebSphereDataSourceNONJTA -jndiName jdbc/PlantsByWebSphereDataSourceNONJTA -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/PlantsAuthAlias -configureResourceProperties [[databaseName java.lang.String PLANTSDB] [driverType java.lang.Integer 4] [serverName java.lang.String 169.62.104.36] [portNumber java.lang.Integer 32612]]]')
 #AdminTask.createDatasource(MYSQLJDBC, '[-name MySQLDataSource -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb -configureResourceProperties [[serverName java.lang.String 10.242.0.6] [portNumber java.lang.String 6603] [databaseName java.lang.String cargotracker] [user java.lang.String root] [password java.lang.String password]]]')
 
-AdminTask.createDatasource('[-name "Mysql Datasource" -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb ]')
+AdminTask.createDatasource(MYSQLJDBC, '[-name "Mysql Datasource" -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb ]')
 AdminConfig.create('MappingModule', '[[authDataAlias DefaultNode01/mysqlDb] [mappingConfigAlias DefaultPrincipalMapping]]')
 AdminConfig.modify('[[name "Mysql Datasource_CF"] [authDataAlias "DefaultNode01/mysqlDb"] [xaRecoveryAuthAlias ""]]')
-AdminConfig.create('MappingModule', '[[authDataAlias DefaultNode01/mysqlDb] [mappingConfigAlias DefaultPrincipalMapping]]')
 
 AdminConfig.modify('[[name "serverName"] [type "java.lang.String"] [description ""] [value "10.242.0.6"] [required "false"]]')
 AdminConfig.modify('[[name "portNumber"] [type "java.lang.String"] [description ""] [value "6603"] [required "false"]]')
@@ -21,9 +20,9 @@ AdminConfig.modify('[[name "databaseName"] [type "java.lang.String"] [descriptio
 AdminConfig.modify('[[name "user"] [type "java.lang.String"] [description ""] [value "root"] [required "false"]]')
 AdminConfig.modify('[[name "password"] [type "java.lang.String"] [description ""] [value "password"] [required "false"]]')
 
-#Change JPA from 2.0 to 2.1
+#Change JPA from 2.1 to 2.0
 svr = AdminConfig.getid('/Server:server1/')
-AdminTask.modifyJPASpecLevel(svr, '[ -specLevel 2.1]')
+AdminTask.modifyJPASpecLevel(svr, '[ -specLevel 2.0]')
 #Install Application
 #AdminApp.install('/demo/HelloWorld.war', '[ -appname HelloWorld -contextroot /HelloWorld]')
 #AdminApp.install('/demo/pbw-ear7.ear', '[ -appname PlantsByWebSphere7 -contextroot /PlantsByWebSphere7]')
