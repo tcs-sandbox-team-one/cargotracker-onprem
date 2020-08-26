@@ -22,7 +22,7 @@ AdminTask.modifyJPASpecLevel(svr, '[ -specLevel 2.0]')
 #AdminApp.install('/demo/HelloWorld.war', '[ -appname HelloWorld -contextroot /HelloWorld]')
 #AdminApp.install('/demo/pbw-ear7.ear', '[ -appname PlantsByWebSphere7 -contextroot /PlantsByWebSphere7]')
 #AdminApp.install('/demo/pbw-ear8.ear', '[ -appname PlantsByWebSphere8 -contextroot /PlantsByWebSphere8]')
-AdminApp.install('/demo/cargotracker-1.0.war', '[ -appname cargotracker -contextroot /cargotracker]')
+AdminApp.install('/demo/cargotracker-1.0.war', '[ -appname cargotracker -contextroot /cargotracker -defaultbinding.virtual.host default_host -usedefaultbindings]')
 #Uninstall default WAS applications
 #AdminApp.uninstall('DefaultApplication')
 AdminApp.uninstall('query')
