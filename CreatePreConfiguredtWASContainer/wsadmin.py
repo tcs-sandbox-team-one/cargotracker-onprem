@@ -8,13 +8,11 @@ AdminTask.createJDBCProvider('[-scope Node=DefaultNode01 -databaseType User-defi
 #Create Datasources
 #AdminTask.createDatasource(DB2JDBCXA, '[-name PlantsByWebSphereDataSource -jndiName jdbc/PlantsByWebSphereDataSource -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/PlantsAuthAlias -xaRecoveryAuthAlias DefaultNode01/PlantsAuthAlias -configureResourceProperties [[databaseName java.lang.String PLANTSDB] [driverType java.lang.Integer 4] [serverName java.lang.String 169.62.104.36] [portNumber java.lang.Integer 32612]]]')
 #AdminTask.createDatasource(DB2JDBC, '[-name PlantsByWebSphereDataSourceNONJTA -jndiName jdbc/PlantsByWebSphereDataSourceNONJTA -dataStoreHelperClassName com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/PlantsAuthAlias -configureResourceProperties [[databaseName java.lang.String PLANTSDB] [driverType java.lang.Integer 4] [serverName java.lang.String 169.62.104.36] [portNumber java.lang.Integer 32612]]]')
-#AdminTask.createDatasource(MYSQLJDBC, '[-name MySQLDataSource -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb -configureResourceProperties [[serverName java.lang.String 10.242.0.6] [portNumber java.lang.String 6603] [databaseName java.lang.String cargotracker] [user java.lang.String root] [password java.lang.String password]]]')
+AdminTask.createDatasource(MYSQLJDBC, '[-name MySQLDataSource -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb ]')
 
-AdminTask.createDatasource('[-name "Mysql Datasource" -jndiName jdbc/mysqlds -dataStoreHelperClassName com.ibm.websphere.rsadapter.GenericDataStoreHelper -containerManagedPersistence true -componentManagedAuthenticationAlias DefaultNode01/mysqlDb ]')
-AdminConfig.create('MappingModule', '[[authDataAlias DefaultNode01/mysqlDb] [mappingConfigAlias DefaultPrincipalMapping]]')
 
 AdminConfig.modify('[[name "serverName"] [type "java.lang.String"] [description ""] [value "10.242.0.6"] [required "false"]]')
-AdminConfig.modify('[[name "portNumber"] [type "java.lang.String"] [description ""] [value "6603"] [required "false"]]')
+AdminConfig.modify('[[name "portNumber"] [type "java.lang.Integer"] [description ""] [value "6603"] [required "false"]]')
 AdminConfig.modify('[[name "databaseName"] [type "java.lang.String"] [description ""] [value "cargotracker"] [required "false"]]')
 AdminConfig.modify('[[name "user"] [type "java.lang.String"] [description ""] [value "root"] [required "false"]]')
 AdminConfig.modify('[[name "password"] [type "java.lang.String"] [description ""] [value "password"] [required "false"]]')
