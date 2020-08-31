@@ -13,12 +13,12 @@ COPY mysqldrivers/mysql-connector-java-8.0.21.jar /demo/mysqldrivers
 COPY wsadmin.py /demo/
 COPY cargotracker-1.0.war /demo/
 
-COPY transformationadvisor-Linux_cargotracker_monolith_collection2.tgz.part* /demo/
+COPY transformationadvisor-2.1_Linux_Demo1.tgz.part* /demo/
 
 WORKDIR "/demo"
-RUN cat transformationadvisor-Linux_cargotracker_monolith_collection2.tgz.part? > transformationadvisor-Linux_cargotracker_monolith_collection2.tgz
-RUN tar xvfz transformationadvisor-Linux_cargotracker_monolith_collection2.tgz
-COPY customCmd.properties /demo/transformationadvisor-2.2.0/conf/
+RUN cat transformationadvisor-2.1_Linux_Demo1.tgz.part? > transformationadvisor-2.1_Linux_Demo1.tgz
+RUN tar xvfz transformationadvisor-2.1_Linux_Demo1.tgz
+COPY customCmd.properties /demo/transformationadvisor-2.0.1/conf/
 
 COPY PASSWORD /tmp/PASSWORD
 ENV pwd=passw0rd
